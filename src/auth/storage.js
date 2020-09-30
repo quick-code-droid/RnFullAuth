@@ -1,23 +1,22 @@
 import { AsyncStorage } from "react-native";
-const KEY = "authUser";
 
-const _storeData = async (user) => {
+const _storeData = async (key, data) => {
   try {
-    await AsyncStorage.setItem(KEY, JSON.stringify(user));
+    await AsyncStorage.setItem(key, JSON.stringify(data));
   } catch (error) {}
 };
 
-const _retrieveData = async () => {
+const _retrieveData = async (key) => {
   try {
-    const value = await AsyncStorage.getItem(KEY);
+    const value = await AsyncStorage.getItem(key);
     if (value !== null) {
       return JSON.parse(value);
     }
   } catch (error) {}
 };
-const _removeData = async () => {
+const _removeData = async (key) => {
   try {
-    await AsyncStorage.removeItem(KEY);
+    await AsyncStorage.removeItem(key);
   } catch (error) {}
 };
 
